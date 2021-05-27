@@ -1,9 +1,11 @@
 #!/bin/bash
 #PBS -j oe
-#PBS -N r_studio 
+#PBS -N r_studio
+#PBS -q MEDIUM
 #PBS -l walltime=08:00:00
-#PBS -l select=1:ncpus=4:mem=8gb
+#PBS -l select=1:ncpus=8:mem=1024gb
 #PBS -o ${HOME}/rstudio-hpc/output/
+#PBS -k o
 
 # modified from https://www.rocker-project.org/use/singularity/
 
@@ -18,7 +20,7 @@ cat >> ${HOME}/rstudio-hpc/log.txt << END
 --- `date` ---
 1. SSH tunnel from your workstation using the following command:
 
-   ssh -L 8787:${HOSTNAME}:${PORT} ${USER}@zodiac.hpc.jcu.edu.au -p 8822 # only include -p 8822 if you are off-campus
+   ssh -L 8787:${HOSTNAME}:${PORT} ${USER}@192.168.1.17
 
    and point your web browser to http://localhost:8787
 

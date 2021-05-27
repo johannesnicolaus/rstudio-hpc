@@ -1,5 +1,5 @@
 BootStrap: docker
-From: rocker/tidyverse:3.6.3
+From: rocker/tidyverse:4.1.0
 
 # https://sylabs.io/guides/3.5/user-guide/definition_files.html
 
@@ -7,9 +7,10 @@ From: rocker/tidyverse:3.6.3
     # install packages 
     apt-get update -qq && apt-get -y --no-install-recommends install \
     openssh-server
+    apt-get install -y vim
 
-    # e.g. install ggtree
-    R -e 'BiocManager::install("ggtree")'
+    # install R packages
+    R -e 'install.packages("Seurat")'
     
     # function to add host machine commands using to continer using ssh
     # https://groups.google.com/a/lbl.gov/forum/#!topic/singularity/syLcsIWWzdo
