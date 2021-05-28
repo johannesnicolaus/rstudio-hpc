@@ -3,7 +3,7 @@
 #PBS -N r_studio
 #PBS -q MEDIUM
 #PBS -l walltime=08:00:00
-#PBS -l select=1:ncpus=8:mem=1024gb
+#PBS -l select=1:ncpus=8:mem=8gb
 #PBS -o ${HOME}/rstudio-hpc/output/
 #PBS -k o
 
@@ -67,7 +67,7 @@ fi
 
 # By default the only host file systems mounted within the container are $HOME, /tmp, /proc, /sys, and /dev.
 # you can use --bind [-B] to bind other file systems
-singularity exec ${HOME}/rstudio-hpc/rstudio_hpc_latest.sif bash -c "\
+singularity exec ${HOME}/rstudio-hpc/rstudio-hpc.sif bash -c "\
   source ${HOME}/.Renviron && \
   rserver --www-port ${PORT} --auth-none=0 --auth-pam-helper-path=pam-helper \
   --secure-cookie-key-file ${HOME}/tmp/rstudio-server/${USER}_secure-cookie-key
